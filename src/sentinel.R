@@ -13,4 +13,12 @@ sent = stack(files)
 sent_scale = scale(sent, center = TRUE, scale = TRUE)
 sent_scale
 
-writeRaster(sent_scale, filename = "D:/tnauss/sentinel/", format = "GTiff", bylayer = TRUE)
+for(i in seq(nlayers(sent_scale))){
+  writeRaster(sent_scale[[i]], filename = paste0("D:/tnauss/sentinel/", names(sent_scale[[i]])),  format="GTiff",overwrite = TRUE)
+}
+
+
+
+# pan sharpening  -> 10m > 20m spot
+# scale
+# segmentation
